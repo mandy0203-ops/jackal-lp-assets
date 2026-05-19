@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>Bonus 設計規格模板 1600×500 · LDBS v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF9F5;
+    --ink: #2B2E33;
+    --forest: #49694F;
+    --forest-deep: #3A5540;
+    --warm: #837466;
+    --amber: #C8923A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1800px; height: 2400px; overflow: hidden;
+    background: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+    color: var(--ink);
+  }
+
+  .page {
+    padding: 80px 100px;
+  }
+
+  /* 標題區 */
+  .title-section {
+    margin-bottom: 60px;
+  }
+  .title-section .eyebrow {
+    font-family: 'Fraunces', 'Noto Serif TC', serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--warm);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .title-section h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .title-section .subtitle {
+    margin-top: 16px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 22px;
+    color: var(--warm);
+    font-weight: 500;
+  }
+
+  .h-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(131, 116, 102, 0.3);
+    margin: 40px 0;
+  }
+
+  /* 模板 frame（1600×500 等比顯示） */
+  .frame-spec-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .frame-wrap {
+    position: relative;
+    width: 1600px;
+    height: 500px;
+    background: var(--cream);
+    border: 2px solid var(--ink);
+    margin-bottom: 24px;
+    /* 內框 padding marker */
+  }
+  /* 內 padding 標註 */
+  .padding-marker {
+    position: absolute;
+    inset: 60px 60px;
+    border: 1px dashed rgba(43, 46, 51, 0.3);
+  }
+  .padding-label {
+    position: absolute;
+    top: -22px;
+    left: 8px;
+    background: #FFFFFF;
+    padding: 2px 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(43, 46, 51, 0.6);
+  }
+
+  /* 左文區 wireframe */
+  .left-zone {
+    position: absolute;
+    left: 60px;
+    top: 60px;
+    width: 870px;
+    height: 380px;
+    background: rgba(73, 105, 79, 0.06);
+    border: 1.5px dashed var(--forest);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  /* 右圖區 wireframe */
+  .right-zone {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 610px;
+    height: 380px;
+    background: rgba(200, 146, 58, 0.06);
+    border: 1.5px dashed var(--amber);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .zone-label {
+    position: absolute;
+    top: -14px;
+    background: #FFFFFF;
+    padding: 4px 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .left-zone .zone-label { left: 16px; color: var(--forest); }
+  .right-zone .zone-label { left: 16px; color: var(--amber); }
+
+  /* 左區內元素 placeholder */
+  .ph {
+    background: rgba(73, 105, 79, 0.18);
+    border-radius: 3px;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--forest-deep);
+    letter-spacing: 0.06em;
+  }
+  .ph.ribbon {
+    display: inline-block;
+    margin-right: 0;
+    background: var(--forest);
+    color: var(--cream);
+    padding: 6px 16px;
+  }
+  .ph.deadline {
+    background: rgba(58, 85, 64, 0.15);
+    color: var(--forest-deep);
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .ph.item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(73, 105, 79, 0.1);
+    padding: 8px 10px;
+    margin-bottom: 6px;
+  }
+  .ph.item .icon-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.2px solid var(--forest);
+    background: rgba(73, 105, 79, 0.15);
+    flex-shrink: 0;
+  }
+  .ph.item.highlight {
+    background: rgba(200, 146, 58, 0.12);
+    border-left: 2px solid var(--amber);
+  }
+  .ph.item.highlight .icon-circle {
+    border-color: var(--amber);
+    background: rgba(200, 146, 58, 0.2);
+  }
+  .ph.anchor {
+    background: rgba(200, 146, 58, 0.12);
+    border-left: 3px solid var(--amber);
+    color: var(--forest-deep);
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  /* 右區 3 張縮圖位置 */
+  .thumb-ph {
+    position: absolute;
+    border: 1.5px solid var(--ink);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .thumb-ph.spreadsheet {
+    left: 16px; top: 30px;
+    width: 56%; height: 42%;
+    transform: rotate(-6deg);
+    border-color: var(--warm);
+  }
+  .thumb-ph.map {
+    left: 18%; top: 35%;
+    width: 64%; height: 50%;
+    transform: rotate(2deg);
+    border-color: var(--forest);
+    z-index: 2;
+  }
+  .thumb-ph.zoom {
+    right: 16px; top: 50%;
+    width: 52%; height: 42%;
+    transform: rotate(5deg);
+    border-color: var(--warm);
+    z-index: 3;
+  }
+
+  /* 尺寸標註箭頭 */
+  .size-arrow {
+    position: absolute;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .size-arrow.top {
+    top: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .size-arrow.right {
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center;
+  }
+
+  /* 規格表格 */
+  .specs {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .spec-section h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--forest);
+  }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .spec-table th, .spec-table td {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(131, 116, 102, 0.2);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+  }
+  .spec-table th {
+    background: rgba(73, 105, 79, 0.06);
+    font-weight: 700;
+    color: var(--forest-deep);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .spec-table td.hex {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+  }
+
+  /* 色票 swatches */
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .swatch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid rgba(131, 116, 102, 0.3);
+    border-radius: 4px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+  }
+  .swatch .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 標題區 -->
+  <div class="title-section">
+    <div class="eyebrow">— Figma Template · LDBS v1 —</div>
+    <h1>Bonus 區塊設計規格</h1>
+    <div class="subtitle">1600 × 500 px · 橫式小橫幅 · 左文右圖</div>
+  </div>
+
+  <!-- 模板 wireframe -->
+  <div class="frame-spec-label">⬇ 1600 × 500 Canvas · 等比顯示</div>
+  <div class="frame-wrap">
+    <!-- 內 padding marker -->
+    <div class="padding-marker">
+      <span class="padding-label">Inner padding 60px</span>
+    </div>
+
+    <!-- 左文字區 870×380 -->
+    <div class="left-zone">
+      <span class="zone-label">Left Text Zone · 870 × 380</span>
+
+      <div class="ph ribbon">RIBBON 首批早鳥 限額 100 人 · 28-32 pt</div>
+      <div class="ph deadline">DEADLINE 7/1（一）23:59 前完成報名 · 48-56 pt</div>
+
+      <div class="ph item">
+        <div class="icon-circle"></div>
+        <span>加碼 01 伴侶關係溝通地圖 · 28-32 pt + 副說明 18-22 pt</span>
+      </div>
+      <div class="ph item">
+        <div class="icon-circle"></div>
+        <span>加碼 02 意願分析試算表 · 認知 × 動機 × 執行成本</span>
+      </div>
+      <div class="ph item">
+        <div class="icon-circle"></div>
+        <span>加碼 03 金句小卡 · 貼書桌、放錢包</span>
+      </div>
+      <div class="ph item highlight">
+        <div class="icon-circle"></div>
+        <span>加碼 04 線上 Q&A ×2 場 [Bonus 徽章]</span>
+      </div>
+      <div class="ph anchor">⭐ 諮詢費錨點 NT$ 3,600 × 2 = NT$ 7,200（琥珀強調）</div>
+    </div>
+
+    <!-- 右圖區 610×380 -->
+    <div class="right-zone">
+      <span class="zone-label">Right Image Zone · 610 × 380</span>
+
+      <div class="thumb-ph spreadsheet">試算表<br>56% w<br>rotate -6°</div>
+      <div class="thumb-ph map">地圖<br>64% w<br>rotate 2°<br>z-index 2</div>
+      <div class="thumb-ph zoom">Zoom<br>52% w<br>rotate 5°<br>z-index 3</div>
+    </div>
+  </div>
+
+  <!-- 規格 -->
+  <div class="specs">
+
+    <div class="spec-section">
+      <h2>📐 尺寸與輸出</h2>
+      <table class="spec-table">
+        <tr><th>項目</th><th>值</th></tr>
+        <tr><td>Canvas 寬</td><td>1600 px（retina 2× = 3200 px）</td></tr>
+        <tr><td>Canvas 高</td><td>500 px（retina 2× = 1000 px）</td></tr>
+        <tr><td>內 padding</td><td>60 px 四邊</td></tr>
+        <tr><td>左區寬</td><td>870 px（54%）</td></tr>
+        <tr><td>右區寬</td><td>610 px（38%）</td></tr>
+        <tr><td>左右間距</td><td>60 px</td></tr>
+        <tr><td>輸出格式</td><td>PNG / WebP（sRGB）</td></tr>
+        <tr><td>檔案大小</td><td>≤ 5 MB（建議 1-2 MB）</td></tr>
+      </table>
+    </div>
+
+    <div class="spec-section">
+      <h2>🎨 LDBS v1 色票</h2>
+      <div class="swatches">
+        <div class="swatch"><span class="dot" style="background: #FAF9F5;"></span><span>米色 #FAF9F5</span></div>
+        <div class="swatch"><span class="dot" style="background: #49694F;"></span><span>森林綠 #49694F</span></div>
+        <div class="swatch"><span class="dot" style="background: #3A5540;"></span><span>森林深 #3A5540</span></div>
+        <div class="swatch"><span class="dot" style="background: #837466;"></span><span>暖棕 #837466</span></div>
+        <div class="swatch"><span class="dot" style="background: #2B2E33;"></span><span>墨黑 #2B2E33</span></div>
+        <div class="swatch"><span class="dot" style="background: #565B66;"></span><span>板岩 #565B66</span></div>
+        <div class="swatch"><span class="dot" style="background: #C8923A;"></span><span>琥珀 #C8923A</span></div>
+        <div class="swatch"><span class="dot" style="background: rgba(131,116,102,0.32); border: 1px solid #999;"></span><span>邊框灰</span></div>
+      </div>
+    </div>
+
+    <div class="spec-section">
+      <h2>🔤 字級規範（@ 1600 wide）</h2>
+      <table class="spec-table">
+        <tr><th>元素</th><th>字級</th><th>字型</th></tr>
+        <tr><td>Ribbon</td><td>28-32 pt</td><td>Noto Serif TC 700</td></tr>
+        <tr><td>截止日</td><td>48-56 pt</td><td>Noto Serif TC 700</td></tr>
+        <tr><td>「7/1」強調</td><td>同上 + 暖棕色</td><td>同上</td></tr>
+        <tr><td>加碼主標</td><td>28-32 pt</td><td>Noto Serif TC 700</td></tr>
+        <tr><td>加碼副說明</td><td>18-22 pt</td><td>Noto Sans TC 400</td></tr>
+        <tr><td>諮詢費錨點</td><td>22-26 pt</td><td>Noto Serif TC 600</td></tr>
+        <tr><td>NT$ 7,200</td><td>+20% + 琥珀</td><td>Fraunces italic 700</td></tr>
+        <tr><td>Bonus 徽章</td><td>14-18 pt</td><td>Plus Jakarta Sans 700</td></tr>
+      </table>
+    </div>
+
+    <div class="spec-section">
+      <h2>🚫 紀律提醒</h2>
+      <table class="spec-table">
+        <tr><th colspan="2">⚠️ 不可違反</th></tr>
+        <tr><td colspan="2">① 中文不用 italic（fake italic 會歪）</td></tr>
+        <tr><td colspan="2">　中文強調 → weight 700 + 森林綠 + 字距 0.06em</td></tr>
+        <tr><td colspan="2">② 英文 / Fraunces 可以用 italic</td></tr>
+        <tr><td colspan="2">③ 不用純黑 #000，墨黑用 #2B2E33</td></tr>
+        <tr><td colspan="2">④ 圖內素材保持「去背」概念，不要再加白方塊</td></tr>
+        <tr><td colspan="2">⑤ 諮詢費 NT$ 7,200 是戰略武器，視覺要明顯</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
